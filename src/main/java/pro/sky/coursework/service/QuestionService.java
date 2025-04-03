@@ -6,6 +6,6 @@ import java.util.Map;
 
 public interface QuestionService {
     Map<Integer, Question> getQuestions();
-    void addQuestion(String question, String answer);
-    void deleteQuestion(String question, String answer);
+    Question addQuestion(String question, String answer);
+    Question deleteQuestion(String question, String answer);
 }

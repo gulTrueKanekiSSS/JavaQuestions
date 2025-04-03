@@ -9,6 +9,7 @@ import pro.sky.coursework.Question;
 import pro.sky.coursework.service.ExaminerServiceImpl;
 
 import java.util.Map;
+import java.util.Set;
 
 @RestController
 @RequestMapping("/exam")
@@ -20,7 +21,7 @@ public class ExamController {
     }
 
     @GetMapping("/get/{amount}")
-    public Map<Integer, Question> getQuestions(@PathVariable int amount){
+    public Set<Question> getQuestions(@PathVariable int amount){
         return examinerService.getQuestions(amount);
     }
 

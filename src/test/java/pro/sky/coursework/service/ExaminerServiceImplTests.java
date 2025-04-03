@@ -7,6 +7,7 @@ import pro.sky.coursework.Question;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.mock;
@@ -32,10 +33,10 @@ public class ExaminerServiceImplTests {
         when(questionService.getQuestions()).thenReturn(mockQuestions);
         when(questionService.getRandomQuestion()).thenReturn(1);
 
-        Map<Integer, Question> result = examinerService.getQuestions(1);
+        Set<Question> result = examinerService.getQuestions(1);
 
         assertEquals(1, result.size());
-        assertTrue(result.containsValue(mockQuestions.get(1)));
+        assertTrue(result.contains(mockQuestions.get(1)));
     }
 
     @Test

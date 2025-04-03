@@ -26,13 +26,20 @@ public class QuestionServiceImpl implements QuestionService{
     }
 
     @Override
-    public void addQuestion(String question, String answer){
+    public Question addQuestion(String question, String answer){
         Integer pk = questions.size() + 1;
-        questions.put(pk, new Question(question, answer));
+        return questions.put(pk, new Question(question, answer));
     }
 
     @Override
-    public void deleteQuestion(String question, String answer){
-        questions.entrySet().removeIf(q -> q.getValue().getQuestion().equals(question) && q.getValue().getAnswer().equals(answer));
+    public Question deleteQuestion(String questionText, String answerText) {
+        for (Map.Entry<Integer, Question> entry : questions.entrySet()) {
+            Question q = entry.getValue();
+            if (q.getQuestion().equals(questionText) && q.getAnswer().equals(answerText)) {
+                questions.remove(entry.getKey());
+                return q;
+            }
+        }
+        return null;
     }
 }
